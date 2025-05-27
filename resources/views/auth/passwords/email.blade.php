@@ -1,5 +1,41 @@
 @extends('layouts.auth')
 
+@section('css')
+<style>
+    body {
+        background-image: url('{{ asset('images/bg.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .login-box {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .input-group .form-control {
+        border-right: 0;
+    }
+
+    .input-group .input-group-text {
+        border-left: 0;
+        background-color: #fff;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+    }
+
+    .invalid-feedback {
+        display: block;
+    }
+</style>
+@endsection
+
 @section('content')
 
 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
@@ -7,10 +43,9 @@
 <form method="POST" action="{{ route('password.email') }}">
     @csrf
     <div class="form-group">
-
         <div class="input-group">
-            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
-                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                   placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -23,11 +58,9 @@
         </span>
         @enderror
     </div>
-    <div class="row">
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Request new password</button>
-        </div>
-        <!-- /.col -->
+
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary text-nowrap">Request new password</button>
     </div>
 </form>
 

@@ -1,10 +1,37 @@
 @extends('layouts.auth')
 
 @section('css')
-
 <style>
+    body {
+        background-image: url('{{ asset('images/bg.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .login-box {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .input-group .form-control {
+        border-right: 0;
+    }
+
+    .input-group .input-group-text {
+        border-left: 0;
+        background-color: #fff;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+    }
+
     .invalid-feedback {
-        display: block
+        display: block;
     }
 </style>
 @endsection
@@ -15,7 +42,6 @@
 <form action="{{ route('login') }}" method="post">
     @csrf
     <div class="form-group">
-
         <div class="input-group">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                 placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -31,8 +57,8 @@
         </span>
         @enderror
     </div>
-    <div class="form-group">
 
+    <div class="form-group">
         <div class="input-group">
             <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"
                 name="password" required autocomplete="current-password">
@@ -48,21 +74,17 @@
         </span>
         @enderror
     </div>
-    <div class="row">
-        <div class="col-8">
-            <div class="icheck-primary">
-                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label for="remember">
-                    Remember Me
-                </label>
-            </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="form-check mb-0">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <label class="form-check-label" for="remember">
+            Remember Me
+            </label>
         </div>
-        <!-- /.col -->
-        <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-        </div>
-        <!-- /.col -->
-    </div>
+        <button type="submit" class="btn btn-primary text-nowrap">Sign In</button>
+</div>
+
 </form>
 
 <p class="mb-1">
