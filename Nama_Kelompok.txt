@@ -19,3 +19,6 @@ Cara running
 - npm run dev
 
 - php artisan serve
+
+username = admin@gmail.com
+password = admin123
