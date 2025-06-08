@@ -1,0 +1,21 @@
+Nama Kelompok
+
+Raditya Ahmad_23312028
+M Fazli Anan_23312072
+Deni Himawan_23312050
+
+Website Pengelolaan Stok Barang
+
+Cara running
+
+-composer install
+
+- php artisan migrate
+
+- php artisan db:seed
+
+- npm install
+
+- npm run dev
+
+- php artisan serve
